@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EasyPlan.AddPage"
+    Title="Add Class"
+    BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="18">
+
+            <Label Text="Add New Class"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Entry x:Name="subjectEntry"
+                   Placeholder="Enter Subject" />
+
+            <Entry x:Name="locationEntry"
+                   Placeholder="Enter Location" />
+
+            <TimePicker x:Name="timePicker" />
+
+            <Button Text="Save Class"
+                    BackgroundColor="#5A3DCC"
+                    TextColor="White"
+                    Clicked="OnSaveClicked" />
+
+            <Button Text="Back"
+                    Clicked="OnBackClicked" />
+
+            <Label x:Name="statusLabel"
+                   TextColor="Green"
+                   FontSize="16" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
