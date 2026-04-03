@@ -1,16 +1,16 @@
-﻿namespace EasyPlan;
+﻿using EasyPlan.Models;
+
+namespace EasyPlan;
 
 public partial class App : Application
 {
-    // Constructor runs when the application starts
-public App()
+    public App()
     {
         InitializeComponent();
-    }
 
-    protected override Window CreateWindow(IActivationState? activationState)
-    {
-        // Set MainPage as the first page
-        return new Window(new NavigationPage(new MainPage()));
+        // Load saved classes
+        ClassRepository.LoadClasses();
+
+        MainPage = new NavigationPage(new MainPage());
     }
 }

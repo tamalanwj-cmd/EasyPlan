@@ -4,36 +4,169 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="EasyPlan.AddPage"
     Title="Add Class"
-    BackgroundColor="White">
+    BackgroundColor="#111111">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="25" Spacing="18">
+	<ScrollView>
+		<VerticalStackLayout Padding="20" Spacing="18">
 
-            <Label Text="Add New Class"
-                   FontSize="28"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+			<!-- Header -->
+			<Grid ColumnDefinitions="Auto,*">
+				<Button Text="←"
+                        BackgroundColor="Transparent"
+                        TextColor="#1E88FF"
+                        FontSize="24"
+                        Clicked="OnBackClicked"
+                        WidthRequest="50" />
 
-            <Entry x:Name="subjectEntry"
-                   Placeholder="Enter Subject" />
+				<Label Grid.Column="1"
+                       Text="New Class"
+                       TextColor="White"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+			</Grid>
 
-            <Entry x:Name="locationEntry"
-                   Placeholder="Enter Location" />
+			<!-- Class Title -->
+			<VerticalStackLayout Spacing="6">
+				<Label Text="Class Title"
+                       TextColor="White"
+                       FontSize="16" />
+				<Border BackgroundColor="#2A2A2A"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="12">
+					<Entry x:Name="subjectEntry"
+                           Placeholder="Enter class title..."
+                           PlaceholderColor="Gray"
+                           TextColor="White"
+                           BackgroundColor="Transparent" />
+				</Border>
+			</VerticalStackLayout>
 
-            <TimePicker x:Name="timePicker" />
+			<!-- Date -->
+			<VerticalStackLayout Spacing="6">
+				<Label Text="Class Date"
+                       TextColor="White"
+                       FontSize="16" />
+				<Border BackgroundColor="#2A2A2A"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="12">
+					<DatePicker x:Name="datePicker"
+                                TextColor="White"
+                                BackgroundColor="Transparent" />
+				</Border>
+			</VerticalStackLayout>
 
-            <Button Text="Save Class"
-                    BackgroundColor="#5A3DCC"
+			<!-- Time -->
+			<VerticalStackLayout Spacing="6">
+				<Label Text="Class Time"
+                       TextColor="White"
+                       FontSize="16" />
+				<Border BackgroundColor="#2A2A2A"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="12">
+					<TimePicker x:Name="timePicker"
+                                TextColor="White"
+                                BackgroundColor="Transparent" />
+				</Border>
+			</VerticalStackLayout>
+
+			<!-- Location -->
+			<VerticalStackLayout Spacing="6">
+				<Label Text="Location"
+                       TextColor="White"
+                       FontSize="16" />
+				<Border BackgroundColor="#2A2A2A"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="12">
+					<Entry x:Name="locationEntry"
+                           Placeholder="Enter location..."
+                           PlaceholderColor="Gray"
+                           TextColor="White"
+                           BackgroundColor="Transparent" />
+				</Border>
+			</VerticalStackLayout>
+
+			<!-- Color Selection -->
+			<VerticalStackLayout Spacing="6">
+				<Label Text="Class Color"
+                       TextColor="White"
+                       FontSize="16" />
+
+				<Border BackgroundColor="#2A2A2A"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="12">
+
+					<HorizontalStackLayout Spacing="12">
+
+						<Button x:Name="redBtn"
+                                WidthRequest="36"
+                                HeightRequest="36"
+                                CornerRadius="18"
+                                BackgroundColor="#FF5252"
+                                Clicked="OnColorSelected" />
+
+						<Button x:Name="blueBtn"
+                                WidthRequest="36"
+                                HeightRequest="36"
+                                CornerRadius="18"
+                                BackgroundColor="#1E88FF"
+                                Clicked="OnColorSelected" />
+
+						<Button x:Name="greenBtn"
+                                WidthRequest="36"
+                                HeightRequest="36"
+                                CornerRadius="18"
+                                BackgroundColor="#4CD964"
+                                Clicked="OnColorSelected" />
+
+						<Button x:Name="orangeBtn"
+                                WidthRequest="36"
+                                HeightRequest="36"
+                                CornerRadius="18"
+                                BackgroundColor="#FF9800"
+                                Clicked="OnColorSelected" />
+
+						<Button x:Name="purpleBtn"
+                                WidthRequest="36"
+                                HeightRequest="36"
+                                CornerRadius="18"
+                                BackgroundColor="#A855F7"
+                                Clicked="OnColorSelected" />
+
+					</HorizontalStackLayout>
+
+				</Border>
+			</VerticalStackLayout>
+
+			<!-- Description -->
+			<VerticalStackLayout Spacing="6">
+				<Label Text="Description"
+                       TextColor="White"
+                       FontSize="16" />
+				<Border BackgroundColor="#2A2A2A"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="12">
+					<Editor x:Name="descriptionEditor"
+                            Placeholder="Add notes or details..."
+                            PlaceholderColor="Gray"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            AutoSize="TextChanges"
+                            HeightRequest="120" />
+				</Border>
+			</VerticalStackLayout>
+
+			<!-- Save Button -->
+			<Button Text="Save"
+                    BackgroundColor="#1E88FF"
                     TextColor="White"
+                    FontSize="22"
+                    FontAttributes="Bold"
+                    HeightRequest="60"
+                    CornerRadius="16"
                     Clicked="OnSaveClicked" />
 
-            <Button Text="Back"
-                    Clicked="OnBackClicked" />
-
-            <Label x:Name="statusLabel"
-                   TextColor="Green"
-                   FontSize="16" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+		</VerticalStackLayout>
+	</ScrollView>
 </ContentPage>

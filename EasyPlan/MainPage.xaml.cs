@@ -1,17 +1,26 @@
-﻿namespace EasyPlan;
+﻿using EasyPlan.Models;
+
+namespace EasyPlan;
 
 public partial class MainPage : ContentPage
 {
-    //Main Dashboard
     public MainPage()
     {
-        //Load UI
         InitializeComponent();
+        scheduleList.ItemsSource = ClassRepository.Classes;
     }
-    //Clicked + button and trigger method
+
     private async void GoToAddPage(object sender, EventArgs e)
     {
-        //Go to addpage screen
         await Navigation.PushAsync(new AddPage());
+    }
+
+    private void OnDeleteClicked(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        ClassItem selectedClass = (ClassItem)button.CommandParameter;
+
+        ClassRepository.Classes.Remove(selectedClass);
+        ClassRepository.SaveClasses();
     }
 }
