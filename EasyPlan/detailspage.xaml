@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EasyPlan.DetailsPage"
+    Title="Task Details"
+    BackgroundColor="#111111">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Label Text="Task Details"
+                   FontSize="26"
+                   TextColor="White"
+                   FontAttributes="Bold" />
+
+            <Label x:Name="subjectLabel"
+                   FontSize="22"
+                   TextColor="White"
+                   FontAttributes="Bold" />
+
+            <Label x:Name="dateLabel"
+                   TextColor="#CCCCCC" />
+
+            <Label x:Name="timeLabel"
+                   TextColor="#CCCCCC" />
+
+            <Label x:Name="locationLabel"
+                   TextColor="White" />
+
+            <Label x:Name="descriptionLabel"
+                   TextColor="White" />
+
+            <!-- EDIT BUTTON -->
+            <Button Text="Edit"
+        Clicked="OnEditClicked" />
+                    BackgroundColor="#1E88FF"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    Clicked="OnEditClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

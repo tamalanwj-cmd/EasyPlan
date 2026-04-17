@@ -1,33 +1,35 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json;
-using Microsoft.Maui.Storage;
 
 namespace EasyPlan.Models;
 
 public static class ClassRepository
 {
-    private const string StorageKey = "SavedClasses";
+    private static string filePath = Path.Combine(FileSystem.AppDataDirectory, "classes.json");
 
-    public static ObservableCollection<ClassItem> Classes { get; private set; } = new();
+    // ONE shared list
+    public static ObservableCollection<ClassItem> Classes { get; } = new();
+
+    public static void LoadClasses()
+    {
+        if (!File.Exists(filePath))
+            return;
+
+        string json = File.ReadAllText(filePath);
+        var items = JsonSerializer.Deserialize<List<ClassItem>>(json);
+
+        if (items == null)
+            return;
+
+        Classes.Clear();
+
+        foreach (var item in items)
+            Classes.Add(item);
+    }
 
     public static void SaveClasses()
     {
         string json = JsonSerializer.Serialize(Classes);
-        Preferences.Set(StorageKey, json);
-    }
-
-    public static void LoadClasses()
-    {
-        string json = Preferences.Get(StorageKey, "");
-
-        if (!string.IsNullOrWhiteSpace(json))
-        {
-            var loadedClasses = JsonSerializer.Deserialize<ObservableCollection<ClassItem>>(json);
-
-            if (loadedClasses != null)
-            {
-                Classes = loadedClasses;
-            }
-        }
+        File.WriteAllText(filePath, json);
     }
 }

@@ -3,75 +3,80 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="EasyPlan.MainPage"
-    Title="Home"
     BackgroundColor="#111111">
 
     <Grid>
 
+        <!-- Scrollable Content -->
         <ScrollView>
             <VerticalStackLayout Padding="20" Spacing="18">
 
+                <!-- Title -->
                 <Label Text="Today's Schedule"
                        FontSize="24"
                        FontAttributes="Bold"
                        TextColor="White"
                        Margin="0,10,0,10" />
+                 <!--//user input--> 
+                <CollectionView x:Name="scheduleList"
+                SelectionMode="Single"
+                SelectionChanged="OnItemTapped">
 
-                <CollectionView x:Name="scheduleList">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
+
                             <Border BackgroundColor="{Binding CardColor}"
-                                    StrokeShape="RoundRectangle 16"
-                                    Padding="15"
-                                    Margin="0,0,0,14">
+                    StrokeShape="RoundRectangle 16"
+                    Padding="15"
+                    Margin="0,0,0,14">
 
                                 <VerticalStackLayout Spacing="6">
 
                                     <Label Text="{Binding Date}"
-                                           TextColor="White"
-                                           FontSize="13"
-                                           Opacity="0.95" />
+                           TextColor="White"
+                           FontSize="13" />
 
                                     <Label Text="{Binding Time}"
-                                           TextColor="White"
-                                           FontSize="14"
-                                           Opacity="0.95" />
+                           TextColor="White"
+                           FontSize="14" />
 
                                     <Label Text="{Binding Subject}"
-                                           TextColor="White"
-                                           FontAttributes="Bold"
-                                           FontSize="22" />
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="22" />
 
                                     <Label Text="{Binding Location}"
-                                           TextColor="White"
-                                           FontSize="15" />
+                           TextColor="White"
+                           FontSize="15" />
 
                                     <Label Text="{Binding Description}"
-                                           TextColor="White"
-                                           FontSize="13"
-                                           LineBreakMode="TailTruncation"
-                                           MaxLines="2" />
-
+                           TextColor="White"
+                           FontSize="13"
+                           LineBreakMode="TailTruncation"
+                           MaxLines="2" />
+                                    
                                     <Button Text="Delete"
-                                            BackgroundColor="#D32F2F"
-                                            TextColor="White"
-                                            FontSize="14"
-                                            CornerRadius="12"
-                                            HeightRequest="40"
-                                            Margin="0,8,0,0"
-                                            Clicked="OnDeleteClicked"
-                                            CommandParameter="{Binding .}" />
-
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="40"
+                        Margin="0,10,0,0"
+                        Clicked="OnDeleteClicked"
+                        CommandParameter="{Binding .}" />
+                               
                                 </VerticalStackLayout>
 
                             </Border>
+
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
+
                 </CollectionView>
 
             </VerticalStackLayout>
         </ScrollView>
 
+        <!-- ONLY ONE ADD BUTTON -->
         <Button Text="+"
                 WidthRequest="65"
                 HeightRequest="65"
@@ -82,7 +87,8 @@
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 Margin="0,0,20,20"
-                Clicked="GoToAddPage" />
+                Clicked="OnAddClicked" />
 
     </Grid>
+
 </ContentPage>
