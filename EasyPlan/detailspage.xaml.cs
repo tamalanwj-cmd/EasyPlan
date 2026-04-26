@@ -18,7 +18,7 @@ public partial class DetailsPage : ContentPage
         dateLabel.Text = item.Date;
         descriptionLabel.Text = item.Description;
     }
-
+    //backbutton
     private async void OnBackClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
